@@ -31,8 +31,7 @@ library(tidyverse)
 Let's load dataset into a table and take a glimpse at the data
 
 ```{r}
-
-heart = read_tsv("https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Heart/Heart.tsv")
+heart = read_tsv("https://raw.githubusercontent.com/ahmedmoustafa/notebooks/main/Heart/Heart.tsv")
 glimpse(heart)
 ```
 
