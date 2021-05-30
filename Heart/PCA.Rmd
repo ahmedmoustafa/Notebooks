@@ -1,0 +1,177 @@
+---
+title: "PCA of the Heart :hearts:"
+subtitle: "Example for using PCA"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE,message=FALSE}
+library(printr)
+```
+
+![Heart](images/cardiogram.jpeg)
+
+This is an analysis of the Cleveland Heart Dataset using Principal component analysis (PCA).
+
+## Dataset
+
+For a description of the dataset and the variables, see [here](README.md)
+
+## Loading Data
+
+But first, we need to load the `tidyverse` package
+
+```{r}
+library(tidyverse)
+```
+
+Let's load dataset into a table and take a glimpse at the data
+
+```{r}
+
+heart = read_tsv("https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Heart/Heart.tsv")
+glimpse(heart)
+```
+
+We will split the dataset into **train** and **test** subsets. The **train** subset will be used to build the PCA and the **test** subset will be used to predict the diagnosis (assuming it is not known) using the **train**-based built PCA.
+
+There are `r nrow(heart)` records (rows) in the dataset. We will take 95% of the records for **train** and 5% for **test**
+
+The **train** subset:
+
+```{r}
+set.seed(123456) # sets the seed of R's random number generator
+
+train = slice_sample(heart %>% group_by(diagnosis),
+                     prop = 0.95,
+                     replace = FALSE) %>%
+  arrange(id)
+
+glimpse(train)
+```
+
+The **test** subset:
+
+```{r}
+test = heart[-train$id, ]
+glimpse(test)
+```
+
+Now we will explore the dataset using [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis). First, we need to remove `id` (subject id) and `diagnosis` (where 1 = heart disease, and 0 = no heart disease) because they should not be part of the PCA. We want to see if the other 13 parameters can separate between subjects by the diagnosis of heart disease.
+
+```{r}
+m = train %>% ungroup() %>% select(-id, -diagnosis)
+head(m)
+```
+## Basic PCA Steps
+
+```{r}
+pca = prcomp(m, scale. = TRUE)
+summary(pca)
+```
+
+The above summary is telling us that PC1 and PC2 explain 21% and 11% of the variance in the dataset, respectively. And together (cumulatively), they explain about 33% of the variance.
+
+```{r}
+plot(pca)
+```
+
+
+## Investigating the PCA Result
+
+The projection (coordinates) of the subjects is stored in a matrix called `x` within the generated `pca` object. We will extend the **train** table with, let's say, the first two principal components as additional columns
+
+```{r}
+t1 = train %>% add_column (PC1 = pca$x[, 1], PC2 = pca$x[, 2])
+glimpse(t1)
+```
+
+Now, these two additional columns (PC1 and PC2) provide the coordinates of the subjects (in the **train** subset) onto the first two components (dimensions or axes).
+
+Let's plot the subjects on the new dimensions (PC1 and PC2) and overlay the target (the diagnosis) to see if there is some structure among the subjects based on the other 13 readings/parameters in the dataset
+
+*Note*: we need to adjust the table and convert the categorical variables `dbl` (numerical) into `factor`
+
+```{r}
+t2 = t1 %>% mutate (sex = factor(sex), cp = factor(cp), fbs = factor(fbs),
+                    restecg = factor(restecg), exang = factor(exang), slope = factor(slope), 
+                    ca = factor(ca), thal = factor(thal), diagnosis = factor(diagnosis))
+glimpse(t2)
+```
+
+```{r}
+ggplot (t2) +
+  geom_point(aes (x = PC1, y = PC2, color = diagnosis), size = 5, alpha = 0.8)
+```
+
+The above figure shows that based on the 13 parameters, there are two sub-populations within the study subjects, **with heart diseases** in blue towards the positive side of PC1 and **without heart disease** in red towards the negative side of PC1.
+
+Then we can tell which of the 13 parameters is driving the separation by PC1. We can look at the loadings on (contributions) those parameters on PC1 through the `rotation` matrix of the `pca` variable:
+
+We can plot the loading on PC1 as a barplot to see the direction and magnitude of the contributions of the different parameters.
+
+We need to extract the loadings from the `pca` variable. The row names of the rotation matrix will be used as a new column, which we are going to call it parameter.
+
+```{r}
+loadings = rownames_to_column(as.data.frame(pca$rotation), var = "parameter")
+loadings
+```
+
+Plotting the loadings as a barplot:
+
+```{r}
+ggplot(loadings) +
+  geom_bar(aes(x = parameter, y = PC1), stat = "identity")
+```
+
+It will be helpful to rearrange the bars (parameters) on the x-axis according to the values of the loadings on the y-axis
+
+```{r}
+ggplot(loadings) +
+  geom_bar(aes(x = reorder (parameter, PC1, FUN = sum), y = PC1), stat = "identity")
+```
+
+The above figure tells us that `oldpeak` ([ST depression induced by exercise relative to rest](https://en.wikipedia.org/wiki/ST_depression)) is the largest contributor to PC1 on the negative side. At the same time `thalach` ([maximum heart rate achieved](https://www.cdc.gov/physicalactivity/basics/measuring/heartrate.htm)) is the largest contributor on the positive side PC1.
+
+## Prediction
+
+Here we are going to predict -- *not doing PCA again* -- the coordinate (transformation) of the **test** subset on the PC1 and PC2 plane determined based on the **train** subset.
+
+```{r predicton}
+prediction = predict(pca, test %>% select(-id, -diagnosis))
+prediction
+```
+
+Extend the **test** table with the predicted coordinnates, PC1, and PC2.
+
+```{r}
+t3 = test %>% mutate (sex = factor(sex), cp = factor(cp), fbs = factor(fbs),
+                      restecg = factor(restecg), exang = factor(exang), slope = factor(slope), 
+                      ca = factor(ca), thal = factor(thal), diagnosis = factor(diagnosis)) %>%
+  add_column(PC1 = prediction[, 1],
+             PC2 = prediction[, 2])
+glimpse(t3)
+```
+
+Let's plot the predictions for the **test** subjects (dark) over the **train** subjects (light)
+
+```{r}
+ggplot () +
+  geom_point(data = t2, aes (x = PC1, y = PC2, color = diagnosis), size = 5, alpha = 0.1) +
+  geom_point(data = t3, aes (x = PC1, y = PC2, color = diagnosis), size = 5, alpha = 0.9)
+```
+
+No too bad :wink:
+
+---
+
+## Summary
+
+- We explored the heart dataset using PCA
+- PCA showed that there were sub-populations among the subjects
+- The separation between the two sub-populations was due to PC1
+- PCA indicated that `oldpeak` was a major contributor to PC1
+- We were able to predict the locations (coordinates) of test subjects on the computed PCA plane (PC1 and PC2)
