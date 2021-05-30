@@ -14,7 +14,7 @@ a variable called `data` using the
 **Note:** `.tsv` stands for [tab-separated
 values](https://en.wikipedia.org/wiki/Tab-separated_values), which is
 simply a plain text file. The file itself can downloaded from
-[here](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/Irf6.tsv).
+[here](https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv).
 
 In the following code, `data` is just an arbitrary **variable** name to
 hold the result of `read.table`. See here for [**valid** variable
@@ -24,7 +24,7 @@ Names](https://wiki.c2.com/?GoodVariableNames).
 
 ``` r
 # Load the data from a file into a variable
-data = read.table("https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/Irf6.tsv", header = TRUE, row.names = 1)
+data = read.table("https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv", header = TRUE, row.names = 1)
 
 # Convert the data.frame (table) in a matrix (numeric)
 data = as.matrix(data)
@@ -555,12 +555,6 @@ adjusted *p*-values, but for the sake of simplicity, we proceeded with
 the original *p*-values instead of the adjusted *p*-values –formally, do
 **NOT** do that.
 
-## Homework
+------------------------------------------------------------------------
 
--   Identify the top 10 *biologically* significant genes (i.e., by
-    fold-change)
--   Identify the top 10 *statistically* significant genes (i.e., by
-    *p*-value)
-
-![Funny
-Genes](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/joke.png)
+![Funny Genes](images/joke.png)

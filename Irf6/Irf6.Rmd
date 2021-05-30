@@ -17,14 +17,14 @@ library(cowplot)
 
 First, we are going to load the dataset from the `.tsv` file into `R` as a variable called `data` using the [`read.table`](http://www.inside-r.org/r-doc/utils/read.table) function.
 
-**Note:** `.tsv` stands for [tab-separated values](https://en.wikipedia.org/wiki/Tab-separated_values), which is simply a plain text file. The file itself can downloaded from [here](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/Irf6.tsv).
+**Note:** `.tsv` stands for [tab-separated values](https://en.wikipedia.org/wiki/Tab-separated_values), which is simply a plain text file. The file itself can downloaded from [here](https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv).
 
 In the following code, `data` is just an arbitrary **variable** name to hold the result of `read.table`. See here for [**valid** variable names](https://www.datamentor.io/r-programming/variable-constant/) in **R**. Also it is recommended to see here for generally [Good Variable Names](https://wiki.c2.com/?GoodVariableNames).
 
 
 ```{r}
 # Load the data from a file into a variable
-data = read.table("https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/Irf6.tsv", header = TRUE, row.names = 1)
+data = read.table("https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv", header = TRUE, row.names = 1)
 
 # Convert the data.frame (table) in a matrix (numeric)
 data = as.matrix(data)
@@ -396,12 +396,6 @@ ggExtra::ggMarginal(p, type = "density", fill = "black", alpha = 0.5)
 
 **Note:** Strictly speaking, we *should* have performed all *p*-value-based analyses (filtering and downstream steps) based on the adjusted *p*-values, but for the sake of simplicity, we proceeded with the original *p*-values instead of the adjusted *p*-values --formally, do **NOT** do that.
 
+---
 
-## Homework
-- Identify the top 10 *biologically* significant genes (i.e., by fold-change)
-- Identify the top 10 *statistically* significant genes (i.e., by *p*-value)
-
-![Funny Genes](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/joke.png)
-
-
-
+![Funny Genes](images/joke.png)

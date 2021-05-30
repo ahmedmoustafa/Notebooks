@@ -13,7 +13,7 @@ Microarray Gene Expression Analysis with R
 # The Central Dogma of Biology
 
 ![DNA makes RNA and RNA makes
-protein](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/dogma.png "The Central Dogma of Biology")
+protein](images/dogma.png "The Central Dogma of Biology")
 
 # Cleft Lip and Palate
 
@@ -151,5 +151,4 @@ identify genes that are regulated (targeted) by **Irf6**.
 
 ## Analysis
 
-[The analysis
-notebook](https://github.com/ahmedmoustafa/Notebooks/blob/master/Irf6/Irf6.md)
+[The analysis notebook](Irf6.md)

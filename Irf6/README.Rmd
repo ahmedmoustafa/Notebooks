@@ -22,7 +22,7 @@ library(cowplot)
 - Generate annotation of the DEGs
 
 # The Central Dogma of Biology
-![DNA makes RNA and RNA makes protein](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/dogma.png "The Central Dogma of Biology")
+![DNA makes RNA and RNA makes protein](images/dogma.png "The Central Dogma of Biology")
 
 # Cleft Lip and Palate
 
@@ -166,10 +166,10 @@ plot_grid(p1, p2, p3, labels = c("a", "b", "c"), ncol = 3)
 - The original dataset can be obtained from NCBI GEO with accession [GSE5800](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE5800)
 
 ```{r dataset, echo=FALSE, message=FALSE, warning=FALSE}
-df = read_tsv("https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/Irf6.tsv")[1:4,]
+df = read_tsv("https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv")[1:4,]
 head(df)
 ```
 
 ## Analysis
 
-[The analysis notebook](https://github.com/ahmedmoustafa/Notebooks/blob/master/Irf6/Irf6.md)
+[The analysis notebook](Irf6.md)
