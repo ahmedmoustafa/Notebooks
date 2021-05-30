@@ -1,2 +1,2 @@
-# notebooks
-General purpose repository for illustration notebooks
+# Notebooks
+A general-purpose repository for illustrative examples on coding and data analysis
