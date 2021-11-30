@@ -413,7 +413,7 @@ We conducted `r scales::comma(number_of_genes)` statistical tests. The computed 
 adjusted.pvalues = p.adjust(pvalue, method = "fdr")
 ```
 
-The number of the **original** *p*-values $\leq$ 0.05 is `r sum(pvalue <= 0.05)` while the number of **adjusted** *p*-values $\leq$ 0.05 is `r sum(adjusted.pvalues <= 0.05)`.
+The number of the **original** *p*-values $\leq$ 0.05 is `r scales::comma(sum(pvalue <= 0.05))` while the number of **adjusted** *p*-values $\leq$ 0.05 is `r scales::comma(sum(adjusted.pvalues <= 0.05))`.
 
 Here is a sample of the original *p*-values and their corresponding adjusted *p*-values:
 

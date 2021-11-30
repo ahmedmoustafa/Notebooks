@@ -681,7 +681,7 @@ method:
 adjusted.pvalues = p.adjust(pvalue, method = "fdr")
 ```
 
-The number of the **original** *p*-values ≤ 0.05 is 5099 while the
+The number of the **original** *p*-values ≤ 0.05 is 5,099 while the
 number of **adjusted** *p*-values ≤ 0.05 is 9.
 
 Here is a sample of the original *p*-values and their corresponding
