@@ -650,15 +650,6 @@ annotation_table = aafTableAnn(filtered_ids, "mouse4302.db")
 
     ## 
 
-    ## Warning in chkPkgs(chip): The mouse4302.db package does not appear to contain
-    ## annotation data.
-
-    ## Warning in result_fetch(res@ptr, n = n): SQL statements must be issued with
-    ## dbExecute() or dbSendStatement() instead of dbGetQuery() or dbSendQuery().
-
-    ## Warning in result_fetch(res@ptr, n = n): SQL statements must be issued with
-    ## dbExecute() or dbSendStatement() instead of dbGetQuery() or dbSendQuery().
-
 ``` r
 saveHTML(annotation_table, file="filtered_annotation.html")
 browseURL("filtered_annotation.html")

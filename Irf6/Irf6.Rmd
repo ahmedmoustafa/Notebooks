@@ -382,13 +382,13 @@ BiocManager::install(c("annaffy", "mouse4302.db"))
 
 Next the annotation can be obtained by loading the library:
 
-```{r}
+```{r warning=FALSE}
 library(annaffy)
 ```
 
 Then generating and exporting the annotation into HTML format:
 
-```{r}
+```{r warning=FALSE}
 annotation_table = aafTableAnn(filtered_ids, "mouse4302.db")
 saveHTML(annotation_table, file="filtered_annotation.html")
 browseURL("filtered_annotation.html")
