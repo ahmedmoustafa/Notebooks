@@ -496,21 +496,21 @@ To obtain the functional annotation of the differentially expressed
 genes, we are going first to extract their probe ids:
 
 ``` r
-filterd_ids = row.names(filtered) # ids of the filtered DE genes
-length(filterd_ids)
+filtered_ids = row.names(filtered) # ids of the filtered DE genes
+length(filtered_ids)
 ```
 
     ## [1] 276
 
 ``` r
-head(filterd_ids)
+head(filtered_ids)
 ```
 
     ## [1] "1416200_at"   "1416236_a_at" "1417808_at"   "1417932_at"   "1418050_at"  
     ## [6] "1418100_at"
 
 ``` r
-write.table (filterd_ids, "filterd_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+write.table (filtered_ids, "filtered_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 ```
 
 ### Using DAVID annotation database
@@ -639,7 +639,7 @@ library(annaffy)
 Then generating and exporting the annotation into HTML format:
 
 ``` r
-annotation_table = aafTableAnn(filterd_ids, "mouse4302.db")
+annotation_table = aafTableAnn(filtered_ids, "mouse4302.db")
 ```
 
     ## Loading required package: mouse4302.db
@@ -660,9 +660,13 @@ annotation_table = aafTableAnn(filterd_ids, "mouse4302.db")
     ## dbExecute() or dbSendStatement() instead of dbGetQuery() or dbSendQuery().
 
 ``` r
-saveHTML(annotation_table, file="filtered.html")
-browseURL("filtered.html")
+saveHTML(annotation_table, file="filtered_annotation.html")
+browseURL("filtered_annotation.html")
 ```
+
+As an HTML file, the [annotation
+table](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_annotation.html)
+can now be opened in any standard browser.
 
 ## Sanity Check (Irf6)
 

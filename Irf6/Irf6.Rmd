@@ -357,10 +357,10 @@ heatmap(filtered, Rowv=row_dendrogram, Colv=col_dendrogram, col = rev(redgreen(1
 To obtain the functional annotation of the differentially expressed genes, we are going first to extract their probe ids:
 
 ```{r}
-filterd_ids = row.names(filtered) # ids of the filtered DE genes
-length(filterd_ids)
-head(filterd_ids)
-write.table (filterd_ids, "filterd_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+filtered_ids = row.names(filtered) # ids of the filtered DE genes
+length(filtered_ids)
+head(filtered_ids)
+write.table (filtered_ids, "filtered_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 ```
 
 ### Using DAVID annotation database
@@ -389,10 +389,12 @@ library(annaffy)
 Then generating and exporting the annotation into HTML format:
 
 ```{r}
-annotation_table = aafTableAnn(filterd_ids, "mouse4302.db")
-saveHTML(annotation_table, file="filtered.html")
-browseURL("filtered.html")
+annotation_table = aafTableAnn(filtered_ids, "mouse4302.db")
+saveHTML(annotation_table, file="filtered_annotation.html")
+browseURL("filtered_annotation.html")
 ```
+
+As an HTML file, the [annotation table](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_annotation.html) can now be opened in any standard browser.
 
 ## Sanity Check (Irf6)
 
