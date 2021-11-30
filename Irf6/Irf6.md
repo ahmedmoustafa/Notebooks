@@ -708,11 +708,10 @@ adjusted p-values:
 
 ![](Irf6_files/figure-gfm/original-vs-adjusted-1.png)<!-- -->
 
-**Note:** Strictly speaking, we *should* have performed all
-*p*-value-based analyses (filtering and downstream steps) based on the
-adjusted *p*-values, but for the sake of simplicity, we proceeded with
-the original *p*-values instead of the adjusted *p*-values –formally, do
-**NOT** do that.
+**Note:** Formally, we *should* have performed all *p*-value-based
+analyses (filtering and downstream steps) based on the adjusted
+*p*-values, but for the sake of simplicity, we proceeded with the
+original *p*-values instead of the adjusted *p*-values.
 
 ------------------------------------------------------------------------
 

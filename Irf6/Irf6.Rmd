@@ -429,7 +429,7 @@ p = ggplot(df) + geom_jitter(aes(x = -log10(pvalue), y = -log10(adjusted.pvalue)
 ggExtra::ggMarginal(p, type = "density", fill = "black", alpha = 0.5)
 ```
 
-**Note:** Strictly speaking, we *should* have performed all *p*-value-based analyses (filtering and downstream steps) based on the adjusted *p*-values, but for the sake of simplicity, we proceeded with the original *p*-values instead of the adjusted *p*-values --formally, do **NOT** do that.
+**Note:** Formally, we *should* have performed all *p*-value-based analyses (filtering and downstream steps) based on the adjusted *p*-values, but for the sake of simplicity, we proceeded with the original *p*-values instead of the adjusted *p*-values.
 
 ---
 
