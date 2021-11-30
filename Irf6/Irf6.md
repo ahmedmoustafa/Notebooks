@@ -669,9 +669,11 @@ Irf6](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/imag
 ## Multiple Testing Correction
 
 We conducted 45,101 statistical tests. The computed *p*-values should be
-corrected for *multiple testing*. The correction can be performed using
-`p.adjust`, which simply takes the original *p*-values as a vector and
-returns the adjusted (corrected) *p*-values using the [False Discovery
+corrected for [**multiple
+testing**](https://en.wikipedia.org/wiki/Multiple_comparisons_problem).
+The correction can be performed using `p.adjust`, which simply takes the
+original *p*-values as a vector and returns the adjusted (corrected)
+*p*-values using the [False Discovery
 Rate](https://en.wikipedia.org/wiki/False_discovery_rate) adjustment
 method:
 
