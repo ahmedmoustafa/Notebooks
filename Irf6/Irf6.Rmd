@@ -407,7 +407,7 @@ boxplot(irf6[1:3], irf6[4:6], col = c("navy", "orange"), names = c("KO", "WT"), 
 ```
 
 ## Multiple Testing Correction
-We conducted `r number_of_genes` statistical tests. The computed *p*-values need to be corrected for *multiple testing*. The correction can be performed using `p.adjust`, which simply takes the original *p*-values a vector and returns the adjusted (corrected) *p*-values using the [False Discovery Rate](https://en.wikipedia.org/wiki/False_discovery_rate) adjustment method:
+We conducted `r scales::comma(number_of_genes)` statistical tests. The computed *p*-values should be corrected for *multiple testing*. The correction can be performed using `p.adjust`, which simply takes the original *p*-values as a vector and returns the adjusted (corrected) *p*-values using the [False Discovery Rate](https://en.wikipedia.org/wiki/False_discovery_rate) adjustment method:
 
 ```{r}
 adjusted.pvalues = p.adjust(pvalue, method = "fdr")
