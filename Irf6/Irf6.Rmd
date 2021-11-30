@@ -355,10 +355,43 @@ heatmap(filtered, Rowv=row_dendrogram, Colv=col_dendrogram, col = rev(redgreen(1
 ## Annnotation
 
 To obtain the functional annotation of the differentially expressed genes, we are going first to extract their probe ids:
+
 ```{r}
 filterd_ids = row.names(filtered) # ids of the filtered DE genes
 length(filterd_ids)
 head(filterd_ids)
+write.table (filterd_ids, "filterd_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+```
+
+### Using DAVID annotation database
+
+We can obtain the annotation online via the [Database for Annotation, Visualization and Integrated Discovery](https://david.ncifcrf.gov/) ([DAVID](https://david.ncifcrf.gov/)) by basically copying and pasting the probe ids to DAVID and running the annotation analysis online.
+
+### Using BioConductor annotation packages
+
+Alternatively, we can generate a comprehensive functional annotation via BioConductor packages [`annaffy`](https://bioconductor.org/packages/release/bioc/html/annaffy.html) and [`mouse4302.db`](https://bioconductor.org/packages/release/data/annotation/html/mouse4302.db.html).
+
+If the packages are not already installed, they can be installed using the following code:
+
+```{r eval=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(c("annaffy", "mouse4302.db"))
+```
+
+Next the annotation can be obtained by loading the library:
+
+```{r}
+library(annaffy)
+```
+
+Then generating and exporting the annotation into HTML format:
+
+```{r}
+annotation_table = aafTableAnn(filterd_ids, "mouse4302.db")
+saveHTML(annotation_table, file="filtered.html")
+browseURL("filtered.html")
 ```
 
 ## Sanity Check (Irf6)

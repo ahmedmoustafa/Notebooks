@@ -509,12 +509,167 @@ head(filterd_ids)
     ## [1] "1416200_at"   "1416236_a_at" "1417808_at"   "1417932_at"   "1418050_at"  
     ## [6] "1418100_at"
 
+``` r
+write.table (filterd_ids, "filterd_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+```
+
+### Using DAVID annotation database
+
+We can obtain the annotation online via the [Database for Annotation,
+Visualization and Integrated Discovery](https://david.ncifcrf.gov/)
+([DAVID](https://david.ncifcrf.gov/)) by basically copying and pasting
+the probe ids to DAVID and running the annotation analysis online.
+
+### Using BioConductor annotation packages
+
+Alternatively, we can generate a comprehensive functional annotation via
+BioConductor packages
+[`annaffy`](https://bioconductor.org/packages/release/bioc/html/annaffy.html)
+and
+[`mouse4302.db`](https://bioconductor.org/packages/release/data/annotation/html/mouse4302.db.html).
+
+If the packages are not already installed, they can be installed using
+the following code:
+
+``` r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(c("annaffy", "mouse4302.db"))
+```
+
+Next the annotation can be obtained by loading the library:
+
+``` r
+library(annaffy)
+```
+
+    ## Loading required package: Biobase
+
+    ## Loading required package: BiocGenerics
+
+    ## Loading required package: parallel
+
+    ## 
+    ## Attaching package: 'BiocGenerics'
+
+    ## The following objects are masked from 'package:parallel':
+    ## 
+    ##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    ##     clusterExport, clusterMap, parApply, parCapply, parLapply,
+    ##     parLapplyLB, parRapply, parSapply, parSapplyLB
+
+    ## The following objects are masked from 'package:dplyr':
+    ## 
+    ##     combine, intersect, setdiff, union
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     IQR, mad, sd, var, xtabs
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    ##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    ##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    ##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    ##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    ##     union, unique, unsplit, which.max, which.min
+
+    ## Welcome to Bioconductor
+    ## 
+    ##     Vignettes contain introductory material; view with
+    ##     'browseVignettes()'. To cite Bioconductor, see
+    ##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+    ## Loading required package: BiocManager
+
+    ## Bioconductor version '3.13' is out-of-date; the current release version '3.14'
+    ##   is available with R version '4.1'; see https://bioconductor.org/install
+
+    ## Loading required package: GO.db
+
+    ## Loading required package: AnnotationDbi
+
+    ## Loading required package: stats4
+
+    ## Loading required package: IRanges
+
+    ## Loading required package: S4Vectors
+
+    ## 
+    ## Attaching package: 'S4Vectors'
+
+    ## The following object is masked from 'package:gplots':
+    ## 
+    ##     space
+
+    ## The following objects are masked from 'package:dplyr':
+    ## 
+    ##     first, rename
+
+    ## The following object is masked from 'package:tidyr':
+    ## 
+    ##     expand
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     expand.grid, I, unname
+
+    ## 
+    ## Attaching package: 'IRanges'
+
+    ## The following objects are masked from 'package:dplyr':
+    ## 
+    ##     collapse, desc, slice
+
+    ## The following object is masked from 'package:purrr':
+    ## 
+    ##     reduce
+
+    ## 
+    ## Attaching package: 'AnnotationDbi'
+
+    ## The following object is masked from 'package:dplyr':
+    ## 
+    ##     select
+
+    ## 
+
+Then generating and exporting the annotation into HTML format:
+
+``` r
+annotation_table = aafTableAnn(filterd_ids, "mouse4302.db")
+```
+
+    ## Loading required package: mouse4302.db
+
+    ## Loading required package: org.Mm.eg.db
+
+    ## 
+
+    ## 
+
+    ## Warning in chkPkgs(chip): The mouse4302.db package does not appear to contain
+    ## annotation data.
+
+    ## Warning in result_fetch(res@ptr, n = n): SQL statements must be issued with
+    ## dbExecute() or dbSendStatement() instead of dbGetQuery() or dbSendQuery().
+
+    ## Warning in result_fetch(res@ptr, n = n): SQL statements must be issued with
+    ## dbExecute() or dbSendStatement() instead of dbGetQuery() or dbSendQuery().
+
+``` r
+saveHTML(annotation_table, file="filtered.html")
+browseURL("filtered.html")
+```
+
 ## Sanity Check (Irf6)
 
 ![Down Regulation of
 Irf6](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/irf6_down.png)
 
-<img src="Irf6_files/figure-gfm/unnamed-chunk-39-1.png" style="display: block; margin: auto;" />
+<img src="Irf6_files/figure-gfm/unnamed-chunk-42-1.png" style="display: block; margin: auto;" />
 
 ## Multiple Testing Correction
 
