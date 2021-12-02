@@ -659,12 +659,55 @@ As an HTML file, the [annotation
 table](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_annotation.html)
 can now be opened in any standard browser.
 
+For a further focused functional analysis, let’s split the DEGs
+according to the regulation pattern (up-regulated vs. down-regulated) to
+determine which functions/pathways/processes turned on or off from WT to
+KO:
+
+## Up-regulated Genes
+
+``` r
+filtered_up_ids = ids[filter_up]
+length (filtered_up_ids)
+```
+
+    ## [1] 95
+
+``` r
+write.table (filtered_up_ids, "filtered_up_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+annotation_table = aafTableAnn(filtered_up_ids, "mouse4302.db")
+saveHTML(annotation_table, file="filtered_up_annotation.html")
+browseURL("filtered_up_annotation.html")
+```
+
+Here is the functional annotation table of [the up-regulated
+genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_up_annotation.html)
+
+## Down-regulated Genes
+
+``` r
+filtered_down_ids = ids[filter_down]
+length (filtered_down_ids)
+```
+
+    ## [1] 181
+
+``` r
+write.table (filtered_down_ids, "filtered_down_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+annotation_table = aafTableAnn(filtered_down_ids, "mouse4302.db")
+saveHTML(annotation_table, file="filtered_down_annotation.html")
+browseURL("filtered_down_annotation.html")
+```
+
+Here is the functional annotation table of [the down-regulated
+genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_down_annotation.html)
+
 ## Sanity Check (Irf6)
 
 ![Down Regulation of
 Irf6](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/irf6_down.png)
 
-<img src="Irf6_files/figure-gfm/unnamed-chunk-42-1.png" style="display: block; margin: auto;" />
+<img src="Irf6_files/figure-gfm/unnamed-chunk-44-1.png" style="display: block; margin: auto;" />
 
 ## Multiple Testing Correction
 
