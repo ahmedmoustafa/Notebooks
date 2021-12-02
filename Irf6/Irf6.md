@@ -510,7 +510,7 @@ head(filtered_ids)
     ## [6] "1418100_at"
 
 ``` r
-write.table (filtered_ids, "filtered_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+write.table (filtered_ids, "results/filtered_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 ```
 
 ### Using DAVID annotation database
@@ -651,12 +651,12 @@ annotation_table = aafTableAnn(filtered_ids, "mouse4302.db")
     ## 
 
 ``` r
-saveHTML(annotation_table, file="filtered_annotation.html")
-browseURL("filtered_annotation.html")
+saveHTML(annotation_table, file="results/filtered_annotation.html")
+browseURL("results/filtered_annotation.html")
 ```
 
 As an HTML file, the [annotation
-table](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_annotation.html)
+table](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/results/filtered_annotation.html)
 can now be opened in any standard browser.
 
 For a further focused functional analysis, let’s split the DEGs
@@ -674,14 +674,14 @@ length (filtered_up_ids)
     ## [1] 95
 
 ``` r
-write.table (filtered_up_ids, "filtered_up_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+write.table (filtered_up_ids, "results/filtered_up_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 annotation_table = aafTableAnn(filtered_up_ids, "mouse4302.db")
-saveHTML(annotation_table, file="filtered_up_annotation.html")
-browseURL("filtered_up_annotation.html")
+saveHTML(annotation_table, file="results/filtered_up_annotation.html")
+browseURL("results/filtered_up_annotation.html")
 ```
 
-Here is the functional annotation table of [the up-regulated
-genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_up_annotation.html)
+Here is the functional annotation of [the up-regulated
+genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/results/filtered_up_annotation.html)
 
 ## Down-regulated Genes
 
@@ -693,14 +693,14 @@ length (filtered_down_ids)
     ## [1] 181
 
 ``` r
-write.table (filtered_down_ids, "filtered_down_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
+write.table (filtered_down_ids, "results/filtered_down_ids.txt", row.names = FALSE, col.names = FALSE, quote = FALSE)
 annotation_table = aafTableAnn(filtered_down_ids, "mouse4302.db")
-saveHTML(annotation_table, file="filtered_down_annotation.html")
-browseURL("filtered_down_annotation.html")
+saveHTML(annotation_table, file="results/filtered_down_annotation.html")
+browseURL("results/filtered_down_annotation.html")
 ```
 
-Here is the functional annotation table of [the down-regulated
-genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/filtered_down_annotation.html)
+Here is the functional annotation of [the down-regulated
+genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/main/Irf6/results/filtered_down_annotation.html)
 
 ## Sanity Check (Irf6)
 
