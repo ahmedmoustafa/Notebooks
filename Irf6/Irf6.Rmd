@@ -1,7 +1,9 @@
 ---
 title: 'Microarray Gene Expression Analysis with R'
-output: github_document
 subtitle: 'Example: Interferon Regulatory Factor 6 (*IRF6*)'
+author: "Ahmed Moustafa (amoustafa@aucegypt.edu)"
+date: "April 20, 2022"
+output: github_document
 license: by-sa
 ---
 
@@ -428,7 +430,7 @@ Here is the functional annotation of [the down-regulated genes](https://htmlprev
 
 ## Sanity Check (Irf6)
 
-![Down Regulation of Irf6](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/irf6_down.png)
+![Down Regulation of Irf6](images/irf6_down.png)
 
 ```{r echo=FALSE,fig.align="center", fig.width=4, fig.height=3.5}
 irf6_id = "1418301_at"

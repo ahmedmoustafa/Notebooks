@@ -1,5 +1,7 @@
 Microarray Gene Expression Analysis with R
 ================
+Ahmed Moustafa (<amoustafa@aucegypt.edu>)
+April 20, 2022
 
 “They have just found the gene for shyness. They would have found it
 earlier, but it was hiding behind two other genes.” –[Stuart
@@ -84,7 +86,8 @@ hist(data, col = "gray", main="Histogram")
 
 ## Transforming
 
-*l**o**g*<sub>2</sub> transformation (why?)
+![log\_2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;log_2 "log_2")
+transformation (why?)
 
 ``` r
 data2 = log2(data)
@@ -214,9 +217,15 @@ head(fold)
     indicate? Considering the `WT` condition is the **reference** (or
     **control**)
 
--   **+ve** fold-change → **Up**-regulation ↑
+-   **+ve** fold-change
+    ![\\rightarrow](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Crightarrow "\rightarrow")
+    **Up**-regulation
+    ![\\uparrow](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cuparrow "\uparrow")
 
--   **-ve** fold-change → **Down**-regulation ↓
+-   **-ve** fold-change
+    ![\\rightarrow](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Crightarrow "\rightarrow")
+    **Down**-regulation
+    ![\\downarrow](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cdownarrow "\downarrow")
 
 ``` r
 hist(fold, col = "gray") # Histogram of the fold
@@ -704,8 +713,7 @@ genes](https://htmlpreview.github.io/?https://raw.githubusercontent.com/ahmedmou
 
 ## Sanity Check (Irf6)
 
-![Down Regulation of
-Irf6](https://raw.githubusercontent.com/ahmedmoustafa/Notebooks/master/Irf6/images/irf6_down.png)
+![Down Regulation of Irf6](images/irf6_down.png)
 
 <img src="Irf6_files/figure-gfm/unnamed-chunk-44-1.png" style="display: block; margin: auto;" />
 
@@ -724,8 +732,11 @@ method:
 adjusted.pvalues = p.adjust(pvalue, method = "fdr")
 ```
 
-The number of the **original** *p*-values ≤ 0.05 is 5,099 while the
-number of **adjusted** *p*-values ≤ 0.05 is 9.
+The number of the **original** *p*-values
+![\\leq](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cleq "\leq")
+0.05 is 5,099 while the number of **adjusted** *p*-values
+![\\leq](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cleq "\leq")
+0.05 is 9.
 
 Here is a sample of the original *p*-values and their corresponding
 adjusted *p*-values:
