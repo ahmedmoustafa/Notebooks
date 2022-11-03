@@ -1,0 +1,14 @@
+---
+title: "Bioinformatics Practical: Microarray with R"
+subtitle: "Case Study: Interferon Regulatory Factor 6 (*IRF6*)"
+author: Ahmed Moustafa (amoustafa@aucegypt.edu)
+date: November 13, 2018
+license: by-sa
+output: ioslides_presentation
+logo: images/AUC.png
+---
+
+## Test
+
+## Test 2
+
