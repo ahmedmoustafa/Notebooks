@@ -8,7 +8,7 @@ format:
    gfm:
     toc: true
     number-sections: true
-    html-math-method: webtex
+    html-math-method: mathjax
 ---
 
 ## Importing required libraries
@@ -52,7 +52,7 @@ Check the behavior of the data (e.g., normal?, skewed?)
 data.hist()
 ```
 
-## Transforming
+### Transforming
 
 $log2$ transformation
 
@@ -149,7 +149,7 @@ plt.scatter(x = wt_means, y = ko_means)
 sns.scatterplot(x = wt_means, y = ko_means)
 ```
 
-### Biological significance (fold-change)
+### Calculating the fold-change
 
 ```{python}
 #| echo: true

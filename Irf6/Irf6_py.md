@@ -8,45 +8,45 @@ Ahmed Moustafa (amoustafa@aucegypt.edu)
   data](#loading-the-data)
 - [<span class="toc-section-number">3</span> Checking the data
   behavior](#checking-the-data-behavior)
-- [<span class="toc-section-number">4</span>
-  Transforming](#transforming)
-- [<span class="toc-section-number">5</span> Exploring the
+  - [<span class="toc-section-number">3.1</span>
+    Transforming](#transforming)
+- [<span class="toc-section-number">4</span> Exploring the
   data](#exploring-the-data)
-  - [<span class="toc-section-number">5.1</span> Boxplot](#boxplot)
-  - [<span class="toc-section-number">5.2</span> Hierarchical
+  - [<span class="toc-section-number">4.1</span> Boxplot](#boxplot)
+  - [<span class="toc-section-number">4.2</span> Hierarchical
     clustering](#hierarchical-clustering)
-- [<span class="toc-section-number">6</span> Biological
+- [<span class="toc-section-number">5</span> Biological
   signifiance](#biological-signifiance)
-  - [<span class="toc-section-number">6.1</span> Slicing the dataset by
+  - [<span class="toc-section-number">5.1</span> Slicing the dataset by
     condition](#slicing-the-dataset-by-condition)
-  - [<span class="toc-section-number">6.2</span> Gene-wise mean
+  - [<span class="toc-section-number">5.2</span> Gene-wise mean
     expression](#gene-wise-mean-expression)
-  - [<span class="toc-section-number">6.3</span> Scatter
+  - [<span class="toc-section-number">5.3</span> Scatter
     plot](#scatter-plot)
-  - [<span class="toc-section-number">6.4</span> Biological significance
-    (fold-change)](#biological-significance-fold-change)
-  - [<span class="toc-section-number">6.5</span> Historgram of the
+  - [<span class="toc-section-number">5.4</span> Calculating the
+    fold-change](#calculating-the-fold-change)
+  - [<span class="toc-section-number">5.5</span> Historgram of the
     fold-change](#historgram-of-the-fold-change)
-- [<span class="toc-section-number">7</span> Statistical
+- [<span class="toc-section-number">6</span> Statistical
   significance](#statistical-significance)
-  - [<span class="toc-section-number">7.1</span> Calculating t-test
+  - [<span class="toc-section-number">6.1</span> Calculating t-test
     *p*-value](#calculating-t-test-p-value)
-  - [<span class="toc-section-number">7.2</span> Historgram of the
+  - [<span class="toc-section-number">6.2</span> Historgram of the
     *p*-value](#historgram-of-the-p-value)
-- [<span class="toc-section-number">8</span> Biological & statistical
+- [<span class="toc-section-number">7</span> Biological & statistical
   signifiance](#biological-statistical-signifiance)
-  - [<span class="toc-section-number">8.1</span> Volcano Plot (*p*-value
+  - [<span class="toc-section-number">7.1</span> Volcano Plot (*p*-value
     vs. fold-change)](#volcano-plot-p-value-vs.-fold-change)
-- [<span class="toc-section-number">9</span> Differentially expressed
+- [<span class="toc-section-number">8</span> Differentially expressed
   genes (DEGs)](#differentially-expressed-genes-degs)
-  - [<span class="toc-section-number">9.1</span> Genes with significant
+  - [<span class="toc-section-number">8.1</span> Genes with significant
     fold-change](#genes-with-significant-fold-change)
-  - [<span class="toc-section-number">9.2</span> Genes with significant
+  - [<span class="toc-section-number">8.2</span> Genes with significant
     *p*-value](#genes-with-significant-p-value)
-  - [<span class="toc-section-number">9.3</span> Genes with significant
+  - [<span class="toc-section-number">8.3</span> Genes with significant
     fold-change & significant
     *p*-value](#genes-with-significant-fold-change-significant-p-value)
-  - [<span class="toc-section-number">9.4</span> Heatmap](#heatmap)
+  - [<span class="toc-section-number">8.4</span> Heatmap](#heatmap)
 
 ## Importing required libraries
 
@@ -126,9 +126,9 @@ data.hist()
 
 ![](Irf6_py_files/figure-commonmark/cell-6-output-2.png)
 
-## Transforming
+### Transforming
 
-![log2](https://latex.codecogs.com/svg.latex?log2 "log2") transformation
+$log2$ transformation
 
 ``` python
 data2 = np.log2(data)
@@ -153,48 +153,48 @@ data2.hist()
 plt.boxplot(data2)
 ```
 
-    {'whiskers': [<matplotlib.lines.Line2D at 0x12fb58350>,
-      <matplotlib.lines.Line2D at 0x13fd018d0>,
-      <matplotlib.lines.Line2D at 0x13fd02290>,
-      <matplotlib.lines.Line2D at 0x13fd03d10>,
-      <matplotlib.lines.Line2D at 0x13fa967d0>,
-      <matplotlib.lines.Line2D at 0x13fa969d0>,
-      <matplotlib.lines.Line2D at 0x13fbf7d90>,
-      <matplotlib.lines.Line2D at 0x13fbf5ed0>,
-      <matplotlib.lines.Line2D at 0x14807d8d0>,
-      <matplotlib.lines.Line2D at 0x14807fd10>,
-      <matplotlib.lines.Line2D at 0x14809ca10>,
-      <matplotlib.lines.Line2D at 0x14809d350>],
-     'caps': [<matplotlib.lines.Line2D at 0x13fd02a10>,
-      <matplotlib.lines.Line2D at 0x13fd00550>,
-      <matplotlib.lines.Line2D at 0x13fa97c90>,
-      <matplotlib.lines.Line2D at 0x13fa97fd0>,
-      <matplotlib.lines.Line2D at 0x13fbf6810>,
-      <matplotlib.lines.Line2D at 0x13fbf4190>,
-      <matplotlib.lines.Line2D at 0x13fbf7690>,
-      <matplotlib.lines.Line2D at 0x14807f6d0>,
-      <matplotlib.lines.Line2D at 0x14807c310>,
-      <matplotlib.lines.Line2D at 0x14809e5d0>,
-      <matplotlib.lines.Line2D at 0x14809cd10>,
-      <matplotlib.lines.Line2D at 0x1480c8bd0>],
-     'boxes': [<matplotlib.lines.Line2D at 0x1481901d0>,
-      <matplotlib.lines.Line2D at 0x13fd03690>,
-      <matplotlib.lines.Line2D at 0x13fa94950>,
-      <matplotlib.lines.Line2D at 0x13fbf56d0>,
-      <matplotlib.lines.Line2D at 0x14807de90>,
-      <matplotlib.lines.Line2D at 0x14809d8d0>],
-     'medians': [<matplotlib.lines.Line2D at 0x13fd03110>,
-      <matplotlib.lines.Line2D at 0x13fa94150>,
-      <matplotlib.lines.Line2D at 0x13fbf5810>,
-      <matplotlib.lines.Line2D at 0x14807c410>,
-      <matplotlib.lines.Line2D at 0x14809ec50>,
-      <matplotlib.lines.Line2D at 0x1480cbf90>],
-     'fliers': [<matplotlib.lines.Line2D at 0x1480b0790>,
-      <matplotlib.lines.Line2D at 0x13fa96010>,
-      <matplotlib.lines.Line2D at 0x1480fd8d0>,
-      <matplotlib.lines.Line2D at 0x13fb6d150>,
-      <matplotlib.lines.Line2D at 0x14809cad0>,
-      <matplotlib.lines.Line2D at 0x1480cacd0>],
+    {'whiskers': [<matplotlib.lines.Line2D at 0x139571e10>,
+      <matplotlib.lines.Line2D at 0x13e9e5f10>,
+      <matplotlib.lines.Line2D at 0x13e9cf150>,
+      <matplotlib.lines.Line2D at 0x13e9ccc90>,
+      <matplotlib.lines.Line2D at 0x13e9666d0>,
+      <matplotlib.lines.Line2D at 0x13e9655d0>,
+      <matplotlib.lines.Line2D at 0x13e9dcc90>,
+      <matplotlib.lines.Line2D at 0x13e9dda50>,
+      <matplotlib.lines.Line2D at 0x13e9d34d0>,
+      <matplotlib.lines.Line2D at 0x13e9d2bd0>,
+      <matplotlib.lines.Line2D at 0x13e9c1d10>,
+      <matplotlib.lines.Line2D at 0x13e9c1750>],
+     'caps': [<matplotlib.lines.Line2D at 0x13e9e6f90>,
+      <matplotlib.lines.Line2D at 0x13e9e6550>,
+      <matplotlib.lines.Line2D at 0x13e9ce510>,
+      <matplotlib.lines.Line2D at 0x13e9cd990>,
+      <matplotlib.lines.Line2D at 0x13e967590>,
+      <matplotlib.lines.Line2D at 0x13e964890>,
+      <matplotlib.lines.Line2D at 0x13e9dc990>,
+      <matplotlib.lines.Line2D at 0x13e9dd390>,
+      <matplotlib.lines.Line2D at 0x13e9d1d50>,
+      <matplotlib.lines.Line2D at 0x1392019d0>,
+      <matplotlib.lines.Line2D at 0x13e9c0310>,
+      <matplotlib.lines.Line2D at 0x13e9c2810>],
+     'boxes': [<matplotlib.lines.Line2D at 0x1394eea10>,
+      <matplotlib.lines.Line2D at 0x13e9ced90>,
+      <matplotlib.lines.Line2D at 0x13e966c10>,
+      <matplotlib.lines.Line2D at 0x13e9dc450>,
+      <matplotlib.lines.Line2D at 0x13e9d3750>,
+      <matplotlib.lines.Line2D at 0x13e9c3a10>],
+     'medians': [<matplotlib.lines.Line2D at 0x13e9cd410>,
+      <matplotlib.lines.Line2D at 0x13e9646d0>,
+      <matplotlib.lines.Line2D at 0x13e967510>,
+      <matplotlib.lines.Line2D at 0x13e9de4d0>,
+      <matplotlib.lines.Line2D at 0x13e9d08d0>,
+      <matplotlib.lines.Line2D at 0x13ea26b50>],
+     'fliers': [<matplotlib.lines.Line2D at 0x13e88f810>,
+      <matplotlib.lines.Line2D at 0x13e91cb10>,
+      <matplotlib.lines.Line2D at 0x13e9cd010>,
+      <matplotlib.lines.Line2D at 0x13e967290>,
+      <matplotlib.lines.Line2D at 0x13e8c89d0>,
+      <matplotlib.lines.Line2D at 0x13ea256d0>],
      'means': []}
 
 ![](Irf6_py_files/figure-commonmark/cell-8-output-2.png)
@@ -351,7 +351,7 @@ wt_means.head()
 plt.scatter(x = wt_means, y = ko_means)
 ```
 
-    <matplotlib.collections.PathCollection at 0x138421190>
+    <matplotlib.collections.PathCollection at 0x13f0dfb10>
 
 ![](Irf6_py_files/figure-commonmark/cell-16-output-2.png)
 
@@ -365,7 +365,7 @@ sns.scatterplot(x = wt_means, y = ko_means)
 
 ![](Irf6_py_files/figure-commonmark/cell-17-output-2.png)
 
-### Biological significance (fold-change)
+### Calculating the fold-change
 
 ``` python
 fold_change = ko_means - wt_means # The difference between means
@@ -484,7 +484,7 @@ sns.histplot (-np.log10(t_stat_df['p_value']))
 plt.scatter (x = fold_change, y = -np.log10(t_stat_df['p_value']))
 ```
 
-    <matplotlib.collections.PathCollection at 0x14868d5d0>
+    <matplotlib.collections.PathCollection at 0x138ffc0d0>
 
 ![](Irf6_py_files/figure-commonmark/cell-24-output-2.png)
 
