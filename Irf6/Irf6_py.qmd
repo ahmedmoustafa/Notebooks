@@ -1,0 +1,267 @@
+---
+title: Microarray Gene Expression Analysis with Python
+subtitle: 'Example: Interferon Regulatory Factor 6 (*IRF6*)'
+author: "Ahmed Moustafa (amoustafa@aucegypt.edu)"
+date: "October 5, 2023"
+license: by-sa
+format:
+   gfm:
+    toc: true
+    number-sections: true
+    html-math-method: webtex
+---
+
+## Importing required libraries
+
+```{python}
+#| echo: true
+import pandas as pd
+import numpy as np
+from scipy import stats
+from scipy.cluster import hierarchy
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+## Loading the data
+
+```{python}
+#| echo: true
+data = pd.read_table("https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv", index_col='ID')
+data.head()
+```
+
+```{python}
+#| echo: true
+number_of_genes = data.shape[0]
+number_of_genes
+```
+
+```{python}
+#| echo: true
+ids = data.index # The ids of the genes are the names of the rows
+ids
+```
+
+## Checking the data behavior
+
+Check the behavior of the data (e.g., normal?, skewed?)
+
+```{python}
+#| echo: true
+data.hist()
+```
+
+## Transforming
+
+$log2$ transformation
+
+```{python}
+#| echo: true
+data2 = np.log2(data)
+data2.head()
+data2.hist()
+```
+
+## Exploring the data
+
+### Boxplot
+
+#### Using Matplotlib
+
+```{python}
+#| echo: true
+plt.boxplot(data2)
+```
+
+#### Using Pandas
+
+```{python}
+#| echo: true
+data2.boxplot()
+```
+
+#### Using Seaborn
+
+```{python}
+#| echo: true
+sns.boxplot(data2)
+```
+
+### Hierarchical clustering
+
+```{python}
+#| echo: true
+linkage_matrix = hierarchy.linkage(data2.T, method='ward')  # Transpose data with .T
+hierarchy.dendrogram(linkage_matrix, labels = data2.columns)
+```
+
+## Biological signifiance
+
+### Slicing the dataset by condition
+
+```{python}
+#| echo: true
+ko = data2[['KO1', 'KO2', 'KO3']] # KO dataframe (KO1,KO2,KO3)
+ko.head()
+```
+
+
+```{python}
+#| echo: true
+wt = data2[['WT1', 'WT2', 'WT3']] # WT dataframe (WT1,WT2,WT3)
+wt.head()
+```
+
+
+### Gene-wise mean expression
+
+Note: the mean function can take the `axis` parameter to determine the direction of computing the mean, where:
+
+- `axis=0` &rightarrow; vertical (by column), the default direction
+- `axis=1` &rightarrow; horizontal (by row), the direction that we want in this case.
+
+```{python}
+#| echo: true
+ko_means = ko.mean(axis=1) # Compute the means of the KO samples
+ko_means.head()
+```
+
+```{python}
+#| echo: true
+wt_means = wt.mean(axis=1) # Compute the means of the WT samples
+wt_means.head()
+```
+
+### Scatter plot
+
+#### Using Matplotlib
+
+```{python}
+#| echo: true
+plt.scatter(x = wt_means, y = ko_means)
+```
+
+#### Using Seaborn
+
+```{python}
+#| echo: true
+sns.scatterplot(x = wt_means, y = ko_means)
+```
+
+### Biological significance (fold-change)
+
+```{python}
+#| echo: true
+fold_change = ko_means - wt_means # The difference between means
+fold_change.head()
+```
+
+Note:
+
+- **+ve** fold-change &rightarrow; **Up**-regulation &uparrow;
+- **-ve** fold-change &rightarrow; **Down**-regulation &downarrow;
+
+### Historgram of the fold-change
+
+#### Using Matplotlib
+
+```{python}
+#| echo: true
+plt.hist (fold_change)
+```
+
+
+#### Using Seaborn
+
+```{python}
+#| echo: true
+sns.histplot (fold_change)
+```
+
+## Statistical significance
+
+### Calculating t-test *p*-value
+
+(a *p*-value for each gene i.e., horizontally)
+
+```{python}
+#| echo: true
+t_stat, p_value = stats.ttest_ind(ko, wt, axis=1)
+t_stat_df = pd.DataFrame({'t_stat': t_stat, 'p_value': p_value})
+t_stat_df.head()
+```
+
+### Historgram of the *p*-value
+
+#### Using Matplotlib
+
+```{python}
+#| echo: true
+plt.hist (-np.log10(t_stat_df['p_value']))
+```
+
+#### Using Seaborn
+
+```{python}
+#| echo: true
+sns.histplot (-np.log10(t_stat_df['p_value']))
+```
+
+## Biological & statistical signifiance
+
+### Volcano Plot (*p*-value vs. fold-change)
+
+#### Using Matplotlib
+
+```{python}
+#| echo: true
+plt.scatter (x = fold_change, y = -np.log10(t_stat_df['p_value']))
+```
+
+#### Using Seaborn
+
+```{python}
+#| echo: true
+sns.scatterplot (x = fold_change.values, y = -np.log10(t_stat_df['p_value']), hue = fold_change.values, palette='RdBu_r')
+```
+
+## Differentially expressed genes (DEGs)
+
+### Genes with significant fold-change
+
+```{python}
+#| echo: true
+fold_change_cutoff = 2
+np.sum(abs(fold_change.values) >= fold_change_cutoff)
+```
+
+### Genes with significant *p*-value
+
+```{python}
+#| echo: true
+pvalue_cutoff = 0.001
+np.sum(t_stat_df['p_value'] <= pvalue_cutoff)
+```
+
+### Genes with significant fold-change & significant *p*-value
+
+```{python}
+#| echo: true
+np.sum((abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <= pvalue_cutoff))
+```
+
+```{python}
+#| echo: true
+filtered = data2.reset_index().loc[(abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <= pvalue_cutoff)]
+filtered.set_index('ID', inplace=True)
+filtered.shape
+filtered.head()
+```
+
+### Heatmap
+
+```{python}
+#| echo: true
+sns.clustermap(filtered, cmap='RdYlGn_r', standard_scale = 0)
+```
