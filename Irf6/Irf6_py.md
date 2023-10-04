@@ -1,6 +1,6 @@
 # Microarray Gene Expression Analysis with Python
-Ahmed Moustafa (amoustafa@aucegypt.edu)
-2023-10-05
+Ahmed Moustafa
+October 5, 2023
 
 - [<span class="toc-section-number">1</span> Importing required
   libraries](#importing-required-libraries)
@@ -21,11 +21,13 @@ Ahmed Moustafa (amoustafa@aucegypt.edu)
     condition](#slicing-the-dataset-by-condition)
   - [<span class="toc-section-number">5.2</span> Gene-wise mean
     expression](#gene-wise-mean-expression)
-  - [<span class="toc-section-number">5.3</span> Scatter
-    plot](#scatter-plot)
+  - [<span class="toc-section-number">5.3</span> Scatter plot using
+    Matplotlib](#scatter-plot-using-matplotlib)
   - [<span class="toc-section-number">5.4</span> Calculating the
     fold-change](#calculating-the-fold-change)
-  - [<span class="toc-section-number">5.5</span> Historgram of the
+  - [<span class="toc-section-number">5.5</span> Scatter plot using
+    Seaborn](#scatter-plot-using-seaborn)
+  - [<span class="toc-section-number">5.6</span> Historgram of the
     fold-change](#historgram-of-the-fold-change)
 - [<span class="toc-section-number">6</span> Statistical
   significance](#statistical-significance)
@@ -153,48 +155,48 @@ data2.hist()
 plt.boxplot(data2)
 ```
 
-    {'whiskers': [<matplotlib.lines.Line2D at 0x139571e10>,
-      <matplotlib.lines.Line2D at 0x13e9e5f10>,
-      <matplotlib.lines.Line2D at 0x13e9cf150>,
-      <matplotlib.lines.Line2D at 0x13e9ccc90>,
-      <matplotlib.lines.Line2D at 0x13e9666d0>,
-      <matplotlib.lines.Line2D at 0x13e9655d0>,
-      <matplotlib.lines.Line2D at 0x13e9dcc90>,
-      <matplotlib.lines.Line2D at 0x13e9dda50>,
-      <matplotlib.lines.Line2D at 0x13e9d34d0>,
-      <matplotlib.lines.Line2D at 0x13e9d2bd0>,
-      <matplotlib.lines.Line2D at 0x13e9c1d10>,
-      <matplotlib.lines.Line2D at 0x13e9c1750>],
-     'caps': [<matplotlib.lines.Line2D at 0x13e9e6f90>,
-      <matplotlib.lines.Line2D at 0x13e9e6550>,
-      <matplotlib.lines.Line2D at 0x13e9ce510>,
-      <matplotlib.lines.Line2D at 0x13e9cd990>,
-      <matplotlib.lines.Line2D at 0x13e967590>,
-      <matplotlib.lines.Line2D at 0x13e964890>,
-      <matplotlib.lines.Line2D at 0x13e9dc990>,
-      <matplotlib.lines.Line2D at 0x13e9dd390>,
-      <matplotlib.lines.Line2D at 0x13e9d1d50>,
-      <matplotlib.lines.Line2D at 0x1392019d0>,
-      <matplotlib.lines.Line2D at 0x13e9c0310>,
-      <matplotlib.lines.Line2D at 0x13e9c2810>],
-     'boxes': [<matplotlib.lines.Line2D at 0x1394eea10>,
-      <matplotlib.lines.Line2D at 0x13e9ced90>,
-      <matplotlib.lines.Line2D at 0x13e966c10>,
-      <matplotlib.lines.Line2D at 0x13e9dc450>,
-      <matplotlib.lines.Line2D at 0x13e9d3750>,
-      <matplotlib.lines.Line2D at 0x13e9c3a10>],
-     'medians': [<matplotlib.lines.Line2D at 0x13e9cd410>,
-      <matplotlib.lines.Line2D at 0x13e9646d0>,
-      <matplotlib.lines.Line2D at 0x13e967510>,
-      <matplotlib.lines.Line2D at 0x13e9de4d0>,
-      <matplotlib.lines.Line2D at 0x13e9d08d0>,
-      <matplotlib.lines.Line2D at 0x13ea26b50>],
-     'fliers': [<matplotlib.lines.Line2D at 0x13e88f810>,
-      <matplotlib.lines.Line2D at 0x13e91cb10>,
-      <matplotlib.lines.Line2D at 0x13e9cd010>,
-      <matplotlib.lines.Line2D at 0x13e967290>,
-      <matplotlib.lines.Line2D at 0x13e8c89d0>,
-      <matplotlib.lines.Line2D at 0x13ea256d0>],
+    {'whiskers': [<matplotlib.lines.Line2D at 0x13ffd1990>,
+      <matplotlib.lines.Line2D at 0x13ffd2850>,
+      <matplotlib.lines.Line2D at 0x14cb101d0>,
+      <matplotlib.lines.Line2D at 0x14cb12310>,
+      <matplotlib.lines.Line2D at 0x1754d1d90>,
+      <matplotlib.lines.Line2D at 0x1754d37d0>,
+      <matplotlib.lines.Line2D at 0x1754bc550>,
+      <matplotlib.lines.Line2D at 0x1754bd390>,
+      <matplotlib.lines.Line2D at 0x13ccc7950>,
+      <matplotlib.lines.Line2D at 0x13ccc6790>,
+      <matplotlib.lines.Line2D at 0x13caa9b90>,
+      <matplotlib.lines.Line2D at 0x13caa8290>],
+     'caps': [<matplotlib.lines.Line2D at 0x13ffd0c10>,
+      <matplotlib.lines.Line2D at 0x14cb12ad0>,
+      <matplotlib.lines.Line2D at 0x14cb12d50>,
+      <matplotlib.lines.Line2D at 0x1754d0150>,
+      <matplotlib.lines.Line2D at 0x1754d3590>,
+      <matplotlib.lines.Line2D at 0x1754beed0>,
+      <matplotlib.lines.Line2D at 0x1754bfb10>,
+      <matplotlib.lines.Line2D at 0x13ccc5650>,
+      <matplotlib.lines.Line2D at 0x13ccc7750>,
+      <matplotlib.lines.Line2D at 0x14c28fdd0>,
+      <matplotlib.lines.Line2D at 0x13caabe90>,
+      <matplotlib.lines.Line2D at 0x13caa9110>],
+     'boxes': [<matplotlib.lines.Line2D at 0x13ffd0cd0>,
+      <matplotlib.lines.Line2D at 0x14cb10950>,
+      <matplotlib.lines.Line2D at 0x1754d2e10>,
+      <matplotlib.lines.Line2D at 0x1754be050>,
+      <matplotlib.lines.Line2D at 0x13ccc5850>,
+      <matplotlib.lines.Line2D at 0x13caa8f90>],
+     'medians': [<matplotlib.lines.Line2D at 0x14cb11310>,
+      <matplotlib.lines.Line2D at 0x1754d3050>,
+      <matplotlib.lines.Line2D at 0x1754bfe50>,
+      <matplotlib.lines.Line2D at 0x13ccc50d0>,
+      <matplotlib.lines.Line2D at 0x13caab390>,
+      <matplotlib.lines.Line2D at 0x13fbdb490>],
+     'fliers': [<matplotlib.lines.Line2D at 0x14c29b9d0>,
+      <matplotlib.lines.Line2D at 0x13ffd05d0>,
+      <matplotlib.lines.Line2D at 0x14cb10b10>,
+      <matplotlib.lines.Line2D at 0x14c275b90>,
+      <matplotlib.lines.Line2D at 0x14c50b250>,
+      <matplotlib.lines.Line2D at 0x14c508f90>],
      'means': []}
 
 ![](Irf6_py_files/figure-commonmark/cell-8-output-2.png)
@@ -343,27 +345,15 @@ wt_means.head()
     1415674_a_at    11.666488
     dtype: float64
 
-### Scatter plot
-
-#### Using Matplotlib
+### Scatter plot using Matplotlib
 
 ``` python
 plt.scatter(x = wt_means, y = ko_means)
 ```
 
-    <matplotlib.collections.PathCollection at 0x13f0dfb10>
+    <matplotlib.collections.PathCollection at 0x14c6ace50>
 
 ![](Irf6_py_files/figure-commonmark/cell-16-output-2.png)
-
-#### Using Seaborn
-
-``` python
-sns.scatterplot(x = wt_means, y = ko_means)
-```
-
-    <Axes: >
-
-![](Irf6_py_files/figure-commonmark/cell-17-output-2.png)
 
 ### Calculating the fold-change
 
@@ -384,6 +374,19 @@ Note:
 
 - **+ve** fold-change → **Up**-regulation ↑
 - **-ve** fold-change → **Down**-regulation ↓
+
+### Scatter plot using Seaborn
+
+``` python
+sns.scatterplot(x = wt_means, y = ko_means, hue = fold_change, palette='RdBu_r')
+plt.xlabel('WT')
+plt.ylabel('KO')
+plt.title('Irf6 KO vs. WT Gene Expression')
+```
+
+    Text(0.5, 1.0, 'Irf6 KO vs. WT Gene Expression')
+
+![](Irf6_py_files/figure-commonmark/cell-18-output-2.png)
 
 ### Historgram of the fold-change
 
@@ -484,7 +487,7 @@ sns.histplot (-np.log10(t_stat_df['p_value']))
 plt.scatter (x = fold_change, y = -np.log10(t_stat_df['p_value']))
 ```
 
-    <matplotlib.collections.PathCollection at 0x138ffc0d0>
+    <matplotlib.collections.PathCollection at 0x14c636510>
 
 ![](Irf6_py_files/figure-commonmark/cell-24-output-2.png)
 

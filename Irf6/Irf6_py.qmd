@@ -1,9 +1,10 @@
 ---
+title-block-banner: true
 title: Microarray Gene Expression Analysis with Python
-subtitle: 'Example: Interferon Regulatory Factor 6 (*IRF6*)'
-author: "Ahmed Moustafa (amoustafa@aucegypt.edu)"
-date: "October 5, 2023"
-license: by-sa
+author: "Ahmed Moustafa"
+date: now
+date-format: long
+license: CC BY-SA
 format:
    gfm:
     toc: true
@@ -133,20 +134,11 @@ wt_means = wt.mean(axis=1) # Compute the means of the WT samples
 wt_means.head()
 ```
 
-### Scatter plot
-
-#### Using Matplotlib
+### Scatter plot using Matplotlib
 
 ```{python}
 #| echo: true
 plt.scatter(x = wt_means, y = ko_means)
-```
-
-#### Using Seaborn
-
-```{python}
-#| echo: true
-sns.scatterplot(x = wt_means, y = ko_means)
 ```
 
 ### Calculating the fold-change
@@ -161,6 +153,16 @@ Note:
 
 - **+ve** fold-change &rightarrow; **Up**-regulation &uparrow;
 - **-ve** fold-change &rightarrow; **Down**-regulation &downarrow;
+
+### Scatter plot using Seaborn
+
+```{python}
+#| echo: true
+sns.scatterplot(x = wt_means, y = ko_means, hue = fold_change, palette='RdBu_r')
+plt.xlabel('WT')
+plt.ylabel('KO')
+plt.title('Irf6 KO vs. WT Gene Expression')
+```
 
 ### Historgram of the fold-change
 
