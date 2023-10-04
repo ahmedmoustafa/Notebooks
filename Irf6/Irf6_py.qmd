@@ -8,6 +8,7 @@ license: CC BY-SA
 format:
    gfm:
     toc: true
+    toc-title: Table of contents
     number-sections: true
     html-math-method: mathjax
 ---

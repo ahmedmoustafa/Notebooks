@@ -155,48 +155,48 @@ data2.hist()
 plt.boxplot(data2)
 ```
 
-    {'whiskers': [<matplotlib.lines.Line2D at 0x13ffd1990>,
-      <matplotlib.lines.Line2D at 0x13ffd2850>,
-      <matplotlib.lines.Line2D at 0x14cb101d0>,
-      <matplotlib.lines.Line2D at 0x14cb12310>,
-      <matplotlib.lines.Line2D at 0x1754d1d90>,
-      <matplotlib.lines.Line2D at 0x1754d37d0>,
-      <matplotlib.lines.Line2D at 0x1754bc550>,
-      <matplotlib.lines.Line2D at 0x1754bd390>,
-      <matplotlib.lines.Line2D at 0x13ccc7950>,
-      <matplotlib.lines.Line2D at 0x13ccc6790>,
-      <matplotlib.lines.Line2D at 0x13caa9b90>,
-      <matplotlib.lines.Line2D at 0x13caa8290>],
-     'caps': [<matplotlib.lines.Line2D at 0x13ffd0c10>,
-      <matplotlib.lines.Line2D at 0x14cb12ad0>,
-      <matplotlib.lines.Line2D at 0x14cb12d50>,
-      <matplotlib.lines.Line2D at 0x1754d0150>,
-      <matplotlib.lines.Line2D at 0x1754d3590>,
-      <matplotlib.lines.Line2D at 0x1754beed0>,
-      <matplotlib.lines.Line2D at 0x1754bfb10>,
-      <matplotlib.lines.Line2D at 0x13ccc5650>,
-      <matplotlib.lines.Line2D at 0x13ccc7750>,
-      <matplotlib.lines.Line2D at 0x14c28fdd0>,
-      <matplotlib.lines.Line2D at 0x13caabe90>,
-      <matplotlib.lines.Line2D at 0x13caa9110>],
-     'boxes': [<matplotlib.lines.Line2D at 0x13ffd0cd0>,
-      <matplotlib.lines.Line2D at 0x14cb10950>,
-      <matplotlib.lines.Line2D at 0x1754d2e10>,
-      <matplotlib.lines.Line2D at 0x1754be050>,
-      <matplotlib.lines.Line2D at 0x13ccc5850>,
-      <matplotlib.lines.Line2D at 0x13caa8f90>],
-     'medians': [<matplotlib.lines.Line2D at 0x14cb11310>,
-      <matplotlib.lines.Line2D at 0x1754d3050>,
-      <matplotlib.lines.Line2D at 0x1754bfe50>,
-      <matplotlib.lines.Line2D at 0x13ccc50d0>,
-      <matplotlib.lines.Line2D at 0x13caab390>,
-      <matplotlib.lines.Line2D at 0x13fbdb490>],
-     'fliers': [<matplotlib.lines.Line2D at 0x14c29b9d0>,
-      <matplotlib.lines.Line2D at 0x13ffd05d0>,
-      <matplotlib.lines.Line2D at 0x14cb10b10>,
-      <matplotlib.lines.Line2D at 0x14c275b90>,
-      <matplotlib.lines.Line2D at 0x14c50b250>,
-      <matplotlib.lines.Line2D at 0x14c508f90>],
+    {'whiskers': [<matplotlib.lines.Line2D at 0x13fa01690>,
+      <matplotlib.lines.Line2D at 0x13fa00450>,
+      <matplotlib.lines.Line2D at 0x14c2d4410>,
+      <matplotlib.lines.Line2D at 0x14c2d7f90>,
+      <matplotlib.lines.Line2D at 0x13fe45250>,
+      <matplotlib.lines.Line2D at 0x13fe46990>,
+      <matplotlib.lines.Line2D at 0x13fa35990>,
+      <matplotlib.lines.Line2D at 0x13fa36850>,
+      <matplotlib.lines.Line2D at 0x175147610>,
+      <matplotlib.lines.Line2D at 0x175145750>,
+      <matplotlib.lines.Line2D at 0x13ffb97d0>,
+      <matplotlib.lines.Line2D at 0x13ffba2d0>],
+     'caps': [<matplotlib.lines.Line2D at 0x13fa003d0>,
+      <matplotlib.lines.Line2D at 0x13fa02f90>,
+      <matplotlib.lines.Line2D at 0x14c2d4310>,
+      <matplotlib.lines.Line2D at 0x14c2d45d0>,
+      <matplotlib.lines.Line2D at 0x13fe47090>,
+      <matplotlib.lines.Line2D at 0x13fe44fd0>,
+      <matplotlib.lines.Line2D at 0x13fa37f10>,
+      <matplotlib.lines.Line2D at 0x13fa34ed0>,
+      <matplotlib.lines.Line2D at 0x175147d90>,
+      <matplotlib.lines.Line2D at 0x175144090>,
+      <matplotlib.lines.Line2D at 0x13ffb9c10>,
+      <matplotlib.lines.Line2D at 0x13ffba9d0>],
+     'boxes': [<matplotlib.lines.Line2D at 0x14c0d2dd0>,
+      <matplotlib.lines.Line2D at 0x14c2d4a90>,
+      <matplotlib.lines.Line2D at 0x14c2d5cd0>,
+      <matplotlib.lines.Line2D at 0x13fa34290>,
+      <matplotlib.lines.Line2D at 0x175147390>,
+      <matplotlib.lines.Line2D at 0x13ffb9950>],
+     'medians': [<matplotlib.lines.Line2D at 0x13fa01c90>,
+      <matplotlib.lines.Line2D at 0x14c2d4990>,
+      <matplotlib.lines.Line2D at 0x13fe47590>,
+      <matplotlib.lines.Line2D at 0x13fa36550>,
+      <matplotlib.lines.Line2D at 0x107d95390>,
+      <matplotlib.lines.Line2D at 0x13ffbba50>],
+     'fliers': [<matplotlib.lines.Line2D at 0x13fc20390>,
+      <matplotlib.lines.Line2D at 0x14cd3a7d0>,
+      <matplotlib.lines.Line2D at 0x13fe45610>,
+      <matplotlib.lines.Line2D at 0x175144910>,
+      <matplotlib.lines.Line2D at 0x13fcbe950>,
+      <matplotlib.lines.Line2D at 0x13fe45950>],
      'means': []}
 
 ![](Irf6_py_files/figure-commonmark/cell-8-output-2.png)
@@ -351,7 +351,7 @@ wt_means.head()
 plt.scatter(x = wt_means, y = ko_means)
 ```
 
-    <matplotlib.collections.PathCollection at 0x14c6ace50>
+    <matplotlib.collections.PathCollection at 0x13cf26110>
 
 ![](Irf6_py_files/figure-commonmark/cell-16-output-2.png)
 
@@ -487,7 +487,7 @@ sns.histplot (-np.log10(t_stat_df['p_value']))
 plt.scatter (x = fold_change, y = -np.log10(t_stat_df['p_value']))
 ```
 
-    <matplotlib.collections.PathCollection at 0x14c636510>
+    <matplotlib.collections.PathCollection at 0x13c951190>
 
 ![](Irf6_py_files/figure-commonmark/cell-24-output-2.png)
 
