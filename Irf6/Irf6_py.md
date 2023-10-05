@@ -49,6 +49,8 @@ October 5, 2023
     fold-change & significant
     *p*-value](#genes-with-significant-fold-change-significant-p-value)
   - [<span class="toc-section-number">8.4</span> Heatmap](#heatmap)
+- [<span class="toc-section-number">9</span> Sanity
+  check](#sanity-check)
 
 ## Importing required libraries
 
@@ -140,48 +142,48 @@ data2.hist()
 plt.boxplot(data2)
 ```
 
-    {'whiskers': [<matplotlib.lines.Line2D at 0x137136450>,
-      <matplotlib.lines.Line2D at 0x137137590>,
-      <matplotlib.lines.Line2D at 0x13710ef10>,
-      <matplotlib.lines.Line2D at 0x13710c550>,
-      <matplotlib.lines.Line2D at 0x13710e0d0>,
-      <matplotlib.lines.Line2D at 0x13724a150>,
-      <matplotlib.lines.Line2D at 0x137249390>,
-      <matplotlib.lines.Line2D at 0x137213750>,
-      <matplotlib.lines.Line2D at 0x137210b90>,
-      <matplotlib.lines.Line2D at 0x1301cf810>,
-      <matplotlib.lines.Line2D at 0x137240f10>,
-      <matplotlib.lines.Line2D at 0x137240250>],
-     'caps': [<matplotlib.lines.Line2D at 0x137137ad0>,
-      <matplotlib.lines.Line2D at 0x1371360d0>,
-      <matplotlib.lines.Line2D at 0x13710cb90>,
-      <matplotlib.lines.Line2D at 0x13710d910>,
-      <matplotlib.lines.Line2D at 0x13724b110>,
-      <matplotlib.lines.Line2D at 0x13724b790>,
-      <matplotlib.lines.Line2D at 0x137213210>,
-      <matplotlib.lines.Line2D at 0x137211b90>,
-      <matplotlib.lines.Line2D at 0x13184bf50>,
-      <matplotlib.lines.Line2D at 0x137241a90>,
-      <matplotlib.lines.Line2D at 0x137240b90>,
-      <matplotlib.lines.Line2D at 0x137269710>],
-     'boxes': [<matplotlib.lines.Line2D at 0x137118690>,
-      <matplotlib.lines.Line2D at 0x13187cdd0>,
-      <matplotlib.lines.Line2D at 0x13710d0d0>,
-      <matplotlib.lines.Line2D at 0x13724a890>,
-      <matplotlib.lines.Line2D at 0x137212950>,
-      <matplotlib.lines.Line2D at 0x137243550>],
-     'medians': [<matplotlib.lines.Line2D at 0x131da10d0>,
-      <matplotlib.lines.Line2D at 0x13710df50>,
-      <matplotlib.lines.Line2D at 0x137249990>,
-      <matplotlib.lines.Line2D at 0x137210590>,
-      <matplotlib.lines.Line2D at 0x1372425d0>,
-      <matplotlib.lines.Line2D at 0x137268c10>],
-     'fliers': [<matplotlib.lines.Line2D at 0x13187d510>,
-      <matplotlib.lines.Line2D at 0x131ce8b10>,
-      <matplotlib.lines.Line2D at 0x13710f450>,
-      <matplotlib.lines.Line2D at 0x137248350>,
-      <matplotlib.lines.Line2D at 0x137241650>,
-      <matplotlib.lines.Line2D at 0x137210dd0>],
+    {'whiskers': [<matplotlib.lines.Line2D at 0x13fb22f10>,
+      <matplotlib.lines.Line2D at 0x13fb57d50>,
+      <matplotlib.lines.Line2D at 0x13fb6b210>,
+      <matplotlib.lines.Line2D at 0x13fb6bad0>,
+      <matplotlib.lines.Line2D at 0x13fb76f90>,
+      <matplotlib.lines.Line2D at 0x13fb778d0>,
+      <matplotlib.lines.Line2D at 0x13fb86dd0>,
+      <matplotlib.lines.Line2D at 0x13fb87690>,
+      <matplotlib.lines.Line2D at 0x13fb96a90>,
+      <matplotlib.lines.Line2D at 0x13fb972d0>,
+      <matplotlib.lines.Line2D at 0x13fba27d0>,
+      <matplotlib.lines.Line2D at 0x13fba3050>],
+     'caps': [<matplotlib.lines.Line2D at 0x13fb686d0>,
+      <matplotlib.lines.Line2D at 0x13fb68fd0>,
+      <matplotlib.lines.Line2D at 0x13fb74150>,
+      <matplotlib.lines.Line2D at 0x13fb74d10>,
+      <matplotlib.lines.Line2D at 0x13fb84290>,
+      <matplotlib.lines.Line2D at 0x13fb84b10>,
+      <matplotlib.lines.Line2D at 0x13fb87f50>,
+      <matplotlib.lines.Line2D at 0x13fb94850>,
+      <matplotlib.lines.Line2D at 0x13fb97b50>,
+      <matplotlib.lines.Line2D at 0x13f820390>,
+      <matplotlib.lines.Line2D at 0x13fba3910>,
+      <matplotlib.lines.Line2D at 0x13fbb4290>],
+     'boxes': [<matplotlib.lines.Line2D at 0x13fb2d110>,
+      <matplotlib.lines.Line2D at 0x13fb6a990>,
+      <matplotlib.lines.Line2D at 0x13fb76750>,
+      <matplotlib.lines.Line2D at 0x13fb86510>,
+      <matplotlib.lines.Line2D at 0x13fb96250>,
+      <matplotlib.lines.Line2D at 0x13fba1f10>],
+     'medians': [<matplotlib.lines.Line2D at 0x13fb69950>,
+      <matplotlib.lines.Line2D at 0x13fb755d0>,
+      <matplotlib.lines.Line2D at 0x13fb853d0>,
+      <matplotlib.lines.Line2D at 0x13fb95110>,
+      <matplotlib.lines.Line2D at 0x13fba0c10>,
+      <matplotlib.lines.Line2D at 0x13fbb4d90>],
+     'fliers': [<matplotlib.lines.Line2D at 0x13fb0fd10>,
+      <matplotlib.lines.Line2D at 0x13fb75e50>,
+      <matplotlib.lines.Line2D at 0x13fb6b850>,
+      <matplotlib.lines.Line2D at 0x13cd89d10>,
+      <matplotlib.lines.Line2D at 0x13fba1510>,
+      <matplotlib.lines.Line2D at 0x13fbb5710>],
      'means': []}
 
 ![](Irf6_py_files/figure-commonmark/cell-7-output-2.png)
@@ -336,7 +338,7 @@ wt_means.head()
 plt.scatter(x = wt_means, y = ko_means)
 ```
 
-    <matplotlib.collections.PathCollection at 0x147f2bc10>
+    <matplotlib.collections.PathCollection at 0x14c03a450>
 
 ![](Irf6_py_files/figure-commonmark/cell-15-output-2.png)
 
@@ -472,7 +474,7 @@ sns.histplot (-np.log10(t_stat_df['p_value']))
 plt.scatter (x = fold_change, y = -np.log10(t_stat_df['p_value']))
 ```
 
-    <matplotlib.collections.PathCollection at 0x175810610>
+    <matplotlib.collections.PathCollection at 0x14c656a50>
 
 ![](Irf6_py_files/figure-commonmark/cell-23-output-2.png)
 
@@ -500,11 +502,11 @@ np.sum(abs(fold_change.values) >= fold_change_cutoff)
 ### Genes with significant *p*-value
 
 ``` python
-pvalue_cutoff = 0.001
+pvalue_cutoff = 0.01
 np.sum(t_stat_df['p_value'] <= pvalue_cutoff)
 ```
 
-    575
+    2503
 
 ### Genes with significant fold-change & significant *p*-value
 
@@ -512,7 +514,7 @@ np.sum(t_stat_df['p_value'] <= pvalue_cutoff)
 np.sum((abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <= pvalue_cutoff))
 ```
 
-    163
+    371
 
 ``` python
 filtered = data2.reset_index().loc[(abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <= pvalue_cutoff)]
@@ -520,7 +522,7 @@ filtered.set_index('ID', inplace=True)
 filtered.shape
 ```
 
-    (163, 6)
+    (371, 6)
 
 ``` python
 filtered.head()
@@ -544,9 +546,9 @@ filtered.head()
 | ID           |           |           |           |           |           |           |
 | 1416200_at   | 13.312004 | 12.973357 | 12.868456 | 7.404290  | 8.558803  | 8.683696  |
 | 1416236_a_at | 14.148397 | 14.039236 | 14.130007 | 12.236044 | 12.022402 | 11.495056 |
+| 1417633_at   | 6.098032  | 5.852998  | 7.776104  | 11.214441 | 10.960436 | 10.628537 |
+| 1417634_at   | 5.916477  | 6.110614  | 7.433794  | 10.172428 | 10.055147 | 9.597494  |
 | 1417808_at   | 5.321928  | 5.442943  | 4.053111  | 15.169780 | 15.070087 | 14.753274 |
-| 1417932_at   | 10.602884 | 10.257152 | 10.496055 | 13.984454 | 14.203294 | 13.720960 |
-| 1418050_at   | 10.622052 | 10.975490 | 10.795066 | 12.865134 | 13.012048 | 12.658122 |
 
 </div>
 
@@ -557,3 +559,43 @@ sns.clustermap(filtered, cmap='RdYlGn_r', standard_scale = 0)
 ```
 
 ![](Irf6_py_files/figure-commonmark/cell-30-output-1.png)
+
+## Sanity check
+
+- Checking IRF6 itself
+
+``` python
+irf6 = filtered.loc['1418301_at']
+irf6
+```
+
+    KO1     7.222070
+    KO2     8.795066
+    KO3     8.793116
+    WT1    12.667599
+    WT2    12.102665
+    WT3    12.008043
+    Name: 1418301_at, dtype: float64
+
+- Reshaping the data for the boxplot
+
+``` python
+irf6_ko = irf6.values[0:3]
+irf6_wt = irf6.values[3:6]
+irf6_data = [irf6_wt, irf6_ko]
+irf6_data
+```
+
+    [array([12.66759946, 12.10266469, 12.00804339]),
+     array([7.22207036, 8.79506558, 8.79311556])]
+
+- A boxplot for expression profile of IRF6 across the samples
+
+``` python
+plt.boxplot(irf6_data, labels=['WT', 'KO'])
+plt.title('Expression levels of IRF6 - KO vs. WT')
+```
+
+    Text(0.5, 1.0, 'Expression levels of IRF6 - KO vs. WT')
+
+![](Irf6_py_files/figure-commonmark/cell-33-output-2.png)
