@@ -280,9 +280,7 @@ irf6
 
 ```{python}
 #| echo: true
-irf6_ko = irf6[0:3]
-irf6_wt = irf6[3:6]
-irf6_data = [irf6_wt, irf6_ko]
+irf6_data = [irf6[3:6], irf6[0:3]]
 irf6_data
 ```
 
