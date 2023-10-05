@@ -65,6 +65,12 @@ import seaborn as sns
 
 ``` python
 data = pd.read_table("https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv", index_col='ID')
+data.shape
+```
+
+    (45101, 6)
+
+``` python
 data.head()
 ```
 
@@ -92,27 +98,6 @@ data.head()
 
 </div>
 
-``` python
-number_of_genes = data.shape[0]
-number_of_genes
-```
-
-    45101
-
-``` python
-ids = data.index # The ids of the genes are the names of the rows
-ids
-```
-
-    Index(['1415670_at', '1415671_at', '1415672_at', '1415673_at', '1415674_a_at',
-           '1415675_at', '1415676_a_at', '1415677_at', '1415678_at', '1415679_at',
-           ...
-           'AFFX-r2-P1-cre-5_at', 'AFFX-ThrX-3_at', 'AFFX-ThrX-5_at',
-           'AFFX-ThrX-M_at', 'AFFX-TransRecMur/X57349_3_at',
-           'AFFX-TransRecMur/X57349_5_at', 'AFFX-TransRecMur/X57349_M_at',
-           'AFFX-TrpnX-3_at', 'AFFX-TrpnX-5_at', 'AFFX-TrpnX-M_at'],
-          dtype='object', name='ID', length=45101)
-
 ## Checking the data behavior
 
 Check the behavior of the data (e.g., normal?, skewed?)
@@ -126,7 +111,7 @@ data.hist()
            [<Axes: title={'center': 'WT2'}>, <Axes: title={'center': 'WT3'}>]],
           dtype=object)
 
-![](Irf6_py_files/figure-commonmark/cell-6-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-5-output-2.png)
 
 ### Transforming
 
@@ -143,7 +128,7 @@ data2.hist()
            [<Axes: title={'center': 'WT2'}>, <Axes: title={'center': 'WT3'}>]],
           dtype=object)
 
-![](Irf6_py_files/figure-commonmark/cell-7-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-6-output-2.png)
 
 ## Exploring the data
 
@@ -155,51 +140,51 @@ data2.hist()
 plt.boxplot(data2)
 ```
 
-    {'whiskers': [<matplotlib.lines.Line2D at 0x17c033f50>,
-      <matplotlib.lines.Line2D at 0x17c464c10>,
-      <matplotlib.lines.Line2D at 0x17c4700d0>,
-      <matplotlib.lines.Line2D at 0x17c470990>,
-      <matplotlib.lines.Line2D at 0x17c473e90>,
-      <matplotlib.lines.Line2D at 0x17c480810>,
-      <matplotlib.lines.Line2D at 0x17c483d50>,
-      <matplotlib.lines.Line2D at 0x17c4906d0>,
-      <matplotlib.lines.Line2D at 0x17c493c10>,
-      <matplotlib.lines.Line2D at 0x17c49c4d0>,
-      <matplotlib.lines.Line2D at 0x17c49f950>,
-      <matplotlib.lines.Line2D at 0x17c4a8050>],
-     'caps': [<matplotlib.lines.Line2D at 0x17c465550>,
-      <matplotlib.lines.Line2D at 0x17c465d50>,
-      <matplotlib.lines.Line2D at 0x17c4712d0>,
-      <matplotlib.lines.Line2D at 0x17c471b90>,
-      <matplotlib.lines.Line2D at 0x17c481110>,
-      <matplotlib.lines.Line2D at 0x17c481950>,
-      <matplotlib.lines.Line2D at 0x17c490fd0>,
-      <matplotlib.lines.Line2D at 0x17c4918d0>,
-      <matplotlib.lines.Line2D at 0x17c49cdd0>,
-      <matplotlib.lines.Line2D at 0x17c49d610>,
-      <matplotlib.lines.Line2D at 0x17c4a8a90>,
-      <matplotlib.lines.Line2D at 0x17c4a94d0>],
-     'boxes': [<matplotlib.lines.Line2D at 0x17c0f8210>,
-      <matplotlib.lines.Line2D at 0x17c467810>,
-      <matplotlib.lines.Line2D at 0x17c4735d0>,
-      <matplotlib.lines.Line2D at 0x17c483510>,
-      <matplotlib.lines.Line2D at 0x17c493350>,
-      <matplotlib.lines.Line2D at 0x17c49ef90>],
-     'medians': [<matplotlib.lines.Line2D at 0x17c4664d0>,
-      <matplotlib.lines.Line2D at 0x17c472490>,
-      <matplotlib.lines.Line2D at 0x17c482210>,
-      <matplotlib.lines.Line2D at 0x17c4921d0>,
-      <matplotlib.lines.Line2D at 0x17c49de50>,
-      <matplotlib.lines.Line2D at 0x17c4a9f90>],
-     'fliers': [<matplotlib.lines.Line2D at 0x17c465290>,
-      <matplotlib.lines.Line2D at 0x17c383750>,
-      <matplotlib.lines.Line2D at 0x17c482ad0>,
-      <matplotlib.lines.Line2D at 0x17c483110>,
-      <matplotlib.lines.Line2D at 0x17c49e690>,
-      <matplotlib.lines.Line2D at 0x17c4aaa50>],
+    {'whiskers': [<matplotlib.lines.Line2D at 0x137136450>,
+      <matplotlib.lines.Line2D at 0x137137590>,
+      <matplotlib.lines.Line2D at 0x13710ef10>,
+      <matplotlib.lines.Line2D at 0x13710c550>,
+      <matplotlib.lines.Line2D at 0x13710e0d0>,
+      <matplotlib.lines.Line2D at 0x13724a150>,
+      <matplotlib.lines.Line2D at 0x137249390>,
+      <matplotlib.lines.Line2D at 0x137213750>,
+      <matplotlib.lines.Line2D at 0x137210b90>,
+      <matplotlib.lines.Line2D at 0x1301cf810>,
+      <matplotlib.lines.Line2D at 0x137240f10>,
+      <matplotlib.lines.Line2D at 0x137240250>],
+     'caps': [<matplotlib.lines.Line2D at 0x137137ad0>,
+      <matplotlib.lines.Line2D at 0x1371360d0>,
+      <matplotlib.lines.Line2D at 0x13710cb90>,
+      <matplotlib.lines.Line2D at 0x13710d910>,
+      <matplotlib.lines.Line2D at 0x13724b110>,
+      <matplotlib.lines.Line2D at 0x13724b790>,
+      <matplotlib.lines.Line2D at 0x137213210>,
+      <matplotlib.lines.Line2D at 0x137211b90>,
+      <matplotlib.lines.Line2D at 0x13184bf50>,
+      <matplotlib.lines.Line2D at 0x137241a90>,
+      <matplotlib.lines.Line2D at 0x137240b90>,
+      <matplotlib.lines.Line2D at 0x137269710>],
+     'boxes': [<matplotlib.lines.Line2D at 0x137118690>,
+      <matplotlib.lines.Line2D at 0x13187cdd0>,
+      <matplotlib.lines.Line2D at 0x13710d0d0>,
+      <matplotlib.lines.Line2D at 0x13724a890>,
+      <matplotlib.lines.Line2D at 0x137212950>,
+      <matplotlib.lines.Line2D at 0x137243550>],
+     'medians': [<matplotlib.lines.Line2D at 0x131da10d0>,
+      <matplotlib.lines.Line2D at 0x13710df50>,
+      <matplotlib.lines.Line2D at 0x137249990>,
+      <matplotlib.lines.Line2D at 0x137210590>,
+      <matplotlib.lines.Line2D at 0x1372425d0>,
+      <matplotlib.lines.Line2D at 0x137268c10>],
+     'fliers': [<matplotlib.lines.Line2D at 0x13187d510>,
+      <matplotlib.lines.Line2D at 0x131ce8b10>,
+      <matplotlib.lines.Line2D at 0x13710f450>,
+      <matplotlib.lines.Line2D at 0x137248350>,
+      <matplotlib.lines.Line2D at 0x137241650>,
+      <matplotlib.lines.Line2D at 0x137210dd0>],
      'means': []}
 
-![](Irf6_py_files/figure-commonmark/cell-8-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-7-output-2.png)
 
 #### Using Pandas
 
@@ -209,7 +194,7 @@ data2.boxplot()
 
     <Axes: >
 
-![](Irf6_py_files/figure-commonmark/cell-9-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-8-output-2.png)
 
 #### Using Seaborn
 
@@ -219,7 +204,7 @@ sns.boxplot(data2)
 
     <Axes: >
 
-![](Irf6_py_files/figure-commonmark/cell-10-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-9-output-2.png)
 
 ### Hierarchical clustering
 
@@ -246,7 +231,7 @@ hierarchy.dendrogram(linkage_matrix, labels = data2.columns)
      'color_list': ['C0', 'C0', 'C0', 'C0', 'C0'],
      'leaves_color_list': ['C0', 'C0', 'C0', 'C0', 'C0', 'C0']}
 
-![](Irf6_py_files/figure-commonmark/cell-11-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-10-output-2.png)
 
 ## Biological signifiance
 
@@ -351,9 +336,9 @@ wt_means.head()
 plt.scatter(x = wt_means, y = ko_means)
 ```
 
-    <matplotlib.collections.PathCollection at 0x17c7052d0>
+    <matplotlib.collections.PathCollection at 0x147f2bc10>
 
-![](Irf6_py_files/figure-commonmark/cell-16-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-15-output-2.png)
 
 ### Calculating the fold-change
 
@@ -386,7 +371,7 @@ plt.title('Irf6 KO vs. WT Gene Expression')
 
     Text(0.5, 1.0, 'Irf6 KO vs. WT Gene Expression')
 
-![](Irf6_py_files/figure-commonmark/cell-18-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-17-output-2.png)
 
 ### Historgram of the fold-change
 
@@ -403,7 +388,7 @@ plt.hist (fold_change)
               3.32178018,   5.13433114,   6.94688211]),
      <BarContainer object of 10 artists>)
 
-![](Irf6_py_files/figure-commonmark/cell-19-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-18-output-2.png)
 
 #### Using Seaborn
 
@@ -413,7 +398,7 @@ sns.histplot (fold_change)
 
     <Axes: ylabel='Count'>
 
-![](Irf6_py_files/figure-commonmark/cell-20-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-19-output-2.png)
 
 ## Statistical significance
 
@@ -465,7 +450,7 @@ plt.hist (-np.log10(t_stat_df['p_value']))
             5.88635583e+00, 6.62215000e+00, 7.35794417e+00]),
      <BarContainer object of 10 artists>)
 
-![](Irf6_py_files/figure-commonmark/cell-22-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-21-output-2.png)
 
 #### Using Seaborn
 
@@ -475,7 +460,7 @@ sns.histplot (-np.log10(t_stat_df['p_value']))
 
     <Axes: xlabel='p_value', ylabel='Count'>
 
-![](Irf6_py_files/figure-commonmark/cell-23-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-22-output-2.png)
 
 ## Biological & statistical signifiance
 
@@ -487,9 +472,9 @@ sns.histplot (-np.log10(t_stat_df['p_value']))
 plt.scatter (x = fold_change, y = -np.log10(t_stat_df['p_value']))
 ```
 
-    <matplotlib.collections.PathCollection at 0x17d940850>
+    <matplotlib.collections.PathCollection at 0x175810610>
 
-![](Irf6_py_files/figure-commonmark/cell-24-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-23-output-2.png)
 
 #### Using Seaborn
 
@@ -499,7 +484,7 @@ sns.scatterplot (x = fold_change.values, y = -np.log10(t_stat_df['p_value']), hu
 
     <Axes: ylabel='p_value'>
 
-![](Irf6_py_files/figure-commonmark/cell-25-output-2.png)
+![](Irf6_py_files/figure-commonmark/cell-24-output-2.png)
 
 ## Differentially expressed genes (DEGs)
 
@@ -533,6 +518,11 @@ np.sum((abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <
 filtered = data2.reset_index().loc[(abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <= pvalue_cutoff)]
 filtered.set_index('ID', inplace=True)
 filtered.shape
+```
+
+    (163, 6)
+
+``` python
 filtered.head()
 ```
 

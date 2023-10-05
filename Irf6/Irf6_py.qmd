@@ -30,19 +30,12 @@ import seaborn as sns
 ```{python}
 #| echo: true
 data = pd.read_table("https://media.githubusercontent.com/media/ahmedmoustafa/gene-expression-datasets/main/datasets/irf6/irf6.tsv", index_col='ID')
+data.shape
+```
+
+```{python}
+#| echo: true
 data.head()
-```
-
-```{python}
-#| echo: true
-number_of_genes = data.shape[0]
-number_of_genes
-```
-
-```{python}
-#| echo: true
-ids = data.index # The ids of the genes are the names of the rows
-ids
 ```
 
 ## Checking the data behavior
@@ -259,6 +252,10 @@ np.sum((abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <
 filtered = data2.reset_index().loc[(abs(fold_change.values) >= fold_change_cutoff) & (t_stat_df['p_value'] <= pvalue_cutoff)]
 filtered.set_index('ID', inplace=True)
 filtered.shape
+```
+
+```{python}
+#| echo: true
 filtered.head()
 ```
 
