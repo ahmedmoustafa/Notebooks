@@ -18,6 +18,13 @@ Circuits](https://amazon.com/Introduction-Systems-Biology-Mathematical-Computati
 
 # Answer:
 
+## System Behavior
+
+Since $Z$ uses an `AND` gate, in the cases where both $Y1$ and $Y2$
+function as repressors (e.g, in diamonds 4, 9, and 10), $Z$ will only
+produce an output when neither $Y1$ nor $Y2$ is present. Furthermore,
+the presence of either repressor is sufficient to turn off $Z$.
+
 ## Define the diamond functions that perform specific logical operations on inputs $S_x$, $S_{y1}$, $S_{y2}$.
 
 ``` python
