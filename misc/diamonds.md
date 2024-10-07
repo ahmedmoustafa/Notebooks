@@ -5,12 +5,12 @@
 
 # Question:
 
-The diamond pattern occurs when $X$ regulates $Y1$ and $Y2$, and both
-$Y1$ and $Y2$ regulate gene $Z$. Analyze the 10 types of diamond
+The diamond pattern occurs when $X$ regulates $Y_1$ and $Y_2$, and both
+$Y_1$ and $Y_2$ regulate gene $Z$. Analyze the 10 types of diamond
 structures (where each edge is either activation + or repression -) with
-respect to their steady-state responses to the inputs $S_x$, $Sy_1$ and
-$Sy_2$. Use an `AND` input function at the $Z$ promoter. Do any diamond
-types lack responsiveness to any input? To all three inputs?
+respect to their steady-state responses to the inputs $S_x$, $S_{y1}$
+and $S_{y2}$. Use an `AND` input function at the $Z$ promoter. Do any
+diamond types lack responsiveness to any input? To all three inputs?
 
 (Question 4.8 from [An Introduction to Systems Biology: Design
 Principles of Biological
@@ -20,9 +20,9 @@ Circuits](https://amazon.com/Introduction-Systems-Biology-Mathematical-Computati
 
 ## System Behavior
 
-Since $Z$ uses an `AND` gate, in the cases where both $Y1$ and $Y2$
+Since $Z$ uses an `AND` gate, in the cases where both $Y_1$ and $Y_2$
 function as repressors (e.g, in diamonds 4, 9, and 10), $Z$ will only
-produce an output when neither $Y1$ nor $Y2$ is present. Furthermore,
+produce an output when neither $Y_1$ nor $Y_2$ is present. Furthermore,
 the presence of either repressor is sufficient to turn off $Z$.
 
 ## Define the diamond functions that perform specific logical operations on inputs $S_x$, $S_{y1}$, $S_{y2}$.
