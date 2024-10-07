@@ -135,7 +135,7 @@ headers
      'D9',
      'D10']
 
-## Initialize the lists for each diamond function output
+## Initialize the list for each diamond output
 
 ``` python
 diamond_1_table = []

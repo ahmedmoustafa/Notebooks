@@ -113,7 +113,7 @@ headers = ["i", "Sx", "Sy1", "Sy2"] + diamonds  # Table headers
 headers
 ```
 
-## Initialize the lists for each diamond function output
+## Initialize the list for each diamond output
 ```{python}
 #| echo: true
 diamond_1_table = []
